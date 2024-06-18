@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import "./SearchBox.css"
 import { useState } from "react";
+// import "dotenv/config";
 
 // prop hissab se weather box ka weather change wala function pass ho rha isse modify keke weatherBox component ko re render kr sakte hai
 export default function SearchBox({updateWeather}){
@@ -11,8 +12,15 @@ export default function SearchBox({updateWeather}){
     let [found, setFound]= useState(false);
 
     //data required for using weather api
-    let API_URL = "http://api.openweathermap.org/data/2.5/weather";
-    let API_KEY = "8b2c95a95de9c11c12a665989f7acb3d";
+    // let API_URL = "http://api.openweathermap.org/data/2.5/weather";
+    // let API_KEY = "8b2c95a95de9c11c12a665989f7acb3d";
+    // let API_URL = process.env.REACT_APP_API_URL;
+    // let API_KEY = process.env.REACT_APP_API_KEY;
+    const API_URL = import.meta.env.VITE_API_URL;
+    const API_KEY = import.meta.env.VITE_API_KEY;
+
+    // console.log("API URL:", process.env.REACT_APP_API_URL);
+    // console.log("API KEY:", process.env.REACT_APP_API_KEY);
 
     //getting weather from the inbuilt geocoding api of open-weather and changin the weather formet to jason and return to the update weather function
     let getWeather= async ()=>{
